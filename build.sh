@@ -11,7 +11,8 @@ $GM_HOME/bin/gm_comp -t=giraph -o=src/ $GM_HOME/apps/src/pagerank.gm
 $GM_HOME/bin/gm_comp -t=giraph -o=src/ $GM_HOME/apps/src/sssp.gm
 
 # Clean bin dir
-rm -rf bin/*
+rm -rf bin/
+mkdir bin/
 
 # Compile java sources
 javac src/*.java -d bin/ -cp lib/giraph-0.2-SNAPSHOT-for-hadoop-1.0.2-jar-with-dependencies.jar:lib/hadoop-core-1.0.3.jar
@@ -23,4 +24,5 @@ jar -xf ../lib/giraph-0.2-SNAPSHOT-for-hadoop-1.0.2-jar-with-dependencies.jar
 cd ..
 
 # Package the bin dir into a jar
+mkdir dist/ &> /dev/null
 jar cf dist/gm_apps.jar -C bin/ .
